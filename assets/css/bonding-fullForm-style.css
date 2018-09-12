@@ -1,0 +1,270 @@
+.subti{
+  text-align: center;
+}
+
+.card{
+  min-height: 700px;
+}
+
+.form-group{
+  display: flex;
+}
+
+.form-group label, .form-group label select {
+  width: 100%;
+}
+
+
+ main {
+	min-width: 320px;
+	max-width: 1100px;
+	padding: 20px;
+	margin: 10px auto;
+  background: #fff;
+}
+
+main #content1{
+  padding: 10% 0;
+}
+	section {
+	display: none;
+	padding: 20px 0 0;
+	border-top: 1px solid #ddd;
+	}
+
+	main input {
+	display: none;
+	}
+
+	label {
+	display: inline-block;
+	margin: 0 0 -1px;
+	padding: 15px 25px;
+	text-align: left;
+	border: 1px solid transparent;
+  }
+
+	label:before {
+	font-family: fontawesome;
+	font-weight: normal;
+	margin-right: 10px;
+	}
+
+	label[for*='1']:before { content: '\f002'; }
+	label[for*='2']:before { content: '\f1c0'; }
+
+	label:hover {
+	color: #888;
+	cursor: pointer;
+	}
+
+	input:checked + label {
+	color: #555;
+	border: 1px solid #ddd;
+	border-top: 2px solid #A30023;
+	border-bottom: 1px solid #fff;
+	}
+
+	#tab1:checked ~ #content1,
+	#tab2:checked ~ #content2 {
+	display: block;
+	}
+
+.search{
+  width: 50%;
+  margin: 0 auto;
+}
+
+form {
+  border-radius: 5px;
+  max-width:100%;
+  width:auto;
+  margin: 5% auto;
+  overflow: hidden;
+}
+
+.search form .btns{
+  display: flex;
+  width: auto;
+}
+
+.search form .btns .btn{
+  width: 45%;
+  margin: 0 auto;
+}
+
+.form1 {
+    border-radius: 5px;
+    width: 100%;
+    margin: 5% auto 0 auto;
+    overflow: hidden;
+}
+	
+form h1 {
+  font-size: 18px;
+  background: #FF9B0D none repeat scroll 0% 0%;
+  color: rgb(255, 255, 255);
+  padding: 22px 25px;
+  border-radius: 5px 5px 0px 0px;
+  margin: auto;
+  text-shadow: none; 
+  text-align:left
+}
+
+
+form input {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 0 0 25px 0;
+  border: none;
+  border-bottom: .5px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  background: transparent;
+  font-weight: 500;
+  opacity: 1;
+  animation: input_opacity 0.8s cubic-bezier(.55, 0, .1, 1);
+  transition: border-bottom 0.2s cubic-bezier(.55, 0, .1, 1);
+}
+
+
+input:focus {
+  outline: none;
+  border-color: #A30023;
+}
+
+
+  textarea {
+    border-radius: 0px 5px 5px 0px;
+    margin: 0;
+    width: 100%;
+    height: 50px; 
+    padding: 0;
+  }
+  
+  .icon-case {
+    width: 35px;
+    float: left;
+    border-radius: 5px 0px 0px 5px;
+    background:#eeeeee;
+    height:42px;
+    position: relative;
+    text-align: center;
+    line-height:40px;
+  }
+  
+  .contentform {
+    padding: 0 30px;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .leftcontact {
+    width:49.5%; 
+    float:left;
+    border-right: 1px dotted #CCC;
+    box-sizing: border-box;
+    padding: 0px 15px 0px 0px;
+  }
+  
+  .rightcontact {
+    width:49.5%;
+    float:right;
+    box-sizing: border-box;
+    padding: 0px 0px 0px 15px;
+  }
+
+  hr{
+    width: 50%;
+    margin: 0 auto;
+    border: .5px solid #A30023;
+  }
+
+  .validation {
+    display:none;
+    margin: 0 0 10px;
+    font-weight:400;
+    font-size:13px;
+    color: #DE5959;
+  }
+  
+form label, form p{
+  font-weight: bold;
+}
+
+form label:hover{
+  color: rgba(0,0,0, 0.87);
+
+}
+    
+  h3{
+    text-align: center;
+  }
+  
+
+
+		@media (min-width: 1367px) {
+
+			.menu{ 
+		      	padding-left: 300px; 
+		      	margin: auto;
+		      	width: 1300px;
+		    }
+    }
+
+.typeMachine{
+  display: block;
+  margin: 5% auto;
+}
+
+
+.btn-save{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: .25em;
+  border: 0;
+  border-bottom: .5px solid rgba(0, 0, 0, 0.2); 
+  border-radius: 0;
+  font-weight: normal;
+}
+
+select:focus, select:active {
+  outline: 0;
+  border-bottom-color: #A30023;
+}
+
+form label{
+	padding: 0 0 15px 0;  
+}
+
+.obsBox{
+  display: block; 
+}
+
+
+
+.obsBox span{
+  font-weight: bold;
+}
+
+.obsBox textarea{
+  margin-bottom: 2em;
+  border: 0;
+  border-bottom: .5px solid rgba(0, 0, 0, 0.2);
+}
+
+.obsBox textarea:focus{
+  outline: 0;
+  border: 0;
+  border-bottom: 2px solid #A30023;
+}
+
+.btn-info{
+  margin: 5% auto;
+}

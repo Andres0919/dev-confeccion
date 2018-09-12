@@ -1,0 +1,271 @@
+  
+  /* Custom page CSS
+  -------------------------------------------------- */
+  /* Not required for template or sticky footer method. */
+
+  @import url('https://fonts.googleapis.com/css?family=Signika');
+html{
+    width: 100%;
+    min-height: 100%;
+} 
+body{
+    font-family: 'Signika', sans-serif;
+    background-color: #fff;
+    display: block;
+    width: 100%;
+    min-height: 100%;
+}
+header{
+    position: absolute;
+    width: 100%
+}
+
+  .fullContainer{
+    background-color: rgba(255,255 , 255, .1);      
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+  }
+
+  .navbar-default .navbar-nav>li>a{
+    color: #fff;
+}
+.navbar-default .navbar-nav>li:hover,.navbar-default .navbar-nav>li:focus,.navbar-default .navbar-nav>li:active{
+    background: #fff;
+    height: 55px;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: #0082CE;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:active{
+    color: #0082CE !important;
+    background-color: #fff !important;
+}
+
+.dropdown-menu>li>a{
+    color: #0082CE;
+}
+
+.dropdown-menu>li>a:hover {
+    background: #0082CE;
+    color: #fff;
+}
+  .navbar-header{
+      width: 80%;
+      margin-left: 10% !important;
+  }
+  #navbar {
+    width: 100%;
+    top:-60px;
+  }
+  .navbar-fixed-top, #navbar.affix-top {
+    position: absolute !important;
+    top: 0px;
+    -webkit-transition: all 0.8s ease;
+  }
+
+  .navbar-center{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+  } 
+  
+  #navbar.affix {
+    position: absolute;
+    top:0;
+    bottom:60;
+    -webkit-transition: all 1s ease;
+    background: #0082CE;
+    border: none;
+    z-index: 1;
+  }
+
+  .navbar-default{
+      background-color: #0082CE;
+  }
+
+  .navbar-collapse{
+      padding: 0;
+  }
+
+  .container{
+      width: 100%;
+      padding: 0;
+      margin: 0;
+  }
+
+  .content{
+    overflow: hidden;
+}
+
+  .navbar{
+      padding: 0;
+  }
+  code {
+    font-size: 80%;
+  }
+  .collapse.navbar-collapse.holder li a {
+      color: white;
+  }
+  .collapse.navbar-collapse.holder li a:hover{
+  
+     font-weight: bold;
+     font-size: 14px;
+  }
+  a.navbar-brand.holder {
+      font-size: 26px;
+      letter-spacing: 3px;
+      color: white;
+  }
+  a.navbar-brand.holder:hover{
+  font-weight: bold;
+  color: white;
+   font-size: 29px;
+  }
+  .collapse.navbar-collapse.holder li {
+      margin-left: 20px;
+  }
+.nav-mobile-menu{
+    display: none;
+}
+
+
+
+  .title{
+    top: 0;
+    text-align: center;
+    font-size:44px;
+    font-weight: bold;
+    margin: 10% auto 0 auto;
+    color: #0082CE;
+  }
+  
+  .secc{
+    width: 100%;
+    margin: 1.5% auto 0 auto;
+  }
+  
+  .card{
+      margin: 7% auto !important;
+      box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); 
+      margin-bottom: 53.5px;
+      padding-bottom: 5%;
+  }
+
+  .card-header{
+    background-color: #0082CE !important;
+    color: #fff;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);  
+    
+  }
+  
+  
+@media only screen and (max-width: 1092px){
+    nav{
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 1000px){
+    .navbar-header{
+        display: none;
+    }
+}
+
+/*-------------------------------------*/
+alert{
+    position: relative;
+    z-index: 9999999;
+}
+
+.btn-info{
+    background-color: #0082CE;
+    border: #0082CE;
+}
+
+input{
+  letter-spacing: .15em;    
+}
+
+.btn-info:hover,.btn-info:active, .btn-info:focus{
+    background-color: #fff !important;
+    color: #0082CE !important;
+    border: 1px solid #0082CE !important;
+}
+
+.btn-success{
+    background: #A30023;
+    border: #A30023;
+}
+
+.btn-success:hover, .btn-success:active, .btn-success:focus {
+    background: #fff !important;
+    color: #A30023 !important;
+    border: 1px solid #A30023 !important;
+}
+
+.alert{
+    position: fixed;
+    z-index: 1111;
+    width: 59%;
+    margin: 2% auto;
+    right: 0;
+    left: 0;
+}
+
+.modal-header{
+    background-color: #0082CE;
+    color: #fff;
+}
+
+/*-------------------------------------*/
+
+
+
+footer {
+    position: relative;
+    background:#0082CE;
+    bottom:0;
+    display:block;
+    height:30px;
+    left:0;
+    padding: 0;
+    width:100%;
+    text-align: center;
+}
+
+footer h2{
+    font-size:22px;
+    font-weight:normal;
+    position:absolute;
+    width:100%;
+    color: white;
+    margin: 0 auto; 
+}
+
+footer a.stuts,a.stuts:visited{
+    border:none;
+    text-decoration:none;
+    color:#fcfcfc;
+    font-size:14px;
+    left:50%;
+    line-height:31px;
+    margin:23px 0 0 110px;
+    position:absolute;
+    top:0;
+}
+
+footer .stuts span {
+    font-size:22px;
+    font-weight:bold;
+    margin-left:5px;
+}
+
+
+/* --------------------------------------------------------------------- */
+
+
+
+

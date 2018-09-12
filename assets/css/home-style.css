@@ -1,0 +1,25 @@
+.img{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 10% auto 0;
+  width: 100%;
+  height: 600px;
+}     
+
+.imgCrystal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  margin: auto;
+}
+
+P{
+  display: flex;
+  justify-content: center;
+}
+
+footer{
+  position: fixed;
+}

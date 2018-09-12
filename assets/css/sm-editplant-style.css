@@ -1,0 +1,28 @@
+.content{
+    overflow: hidden;
+}
+
+form input {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 10px 5px;
+    margin: 0 0 25px 0;
+    border: none;
+    border-bottom: .5px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    background: transparent;
+    font-weight: 500;
+    opacity: 1;
+    animation: input_opacity 0.8s cubic-bezier(.55, 0, .1, 1);
+    transition: border-bottom 0.2s cubic-bezier(.55, 0, .1, 1);
+  }
+
+  input:focus {
+    outline: none;
+    border-bottom: 2px solid #A30023;
+  }
+
+footer{
+    position: fixed;
+}

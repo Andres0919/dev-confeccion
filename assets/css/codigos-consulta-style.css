@@ -1,0 +1,134 @@
+  .info p {
+    text-align:center;
+    color: #999;
+    text-transform:none;
+    font-weight:600;
+    font-size:15px;
+    margin-top:2px
+  }
+  
+  .info i {
+    color:#F6AA93;
+  }
+  
+  form h1 {
+    font-size: 18px;
+    background: #F6AA93 none repeat scroll 0% 0%;
+    color: rgb(255, 255, 255);
+    padding: 22px 25px;
+    border-radius: 5px 5px 0px 0px;
+    margin: auto;
+    text-shadow: none; 
+    text-align:left
+  }
+  
+  form {
+    border-radius: 5px;
+    max-width:400px;
+    width:400px;
+    margin: 5% auto 139px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+   
+  }
+  
+  p span {
+    color: #F00;
+  }
+  
+  p {
+    margin: 0px;
+    font-weight: 500;
+    line-height: 2;
+    color:#333;
+  }
+  
+  h1 {
+    text-align:center; 
+    color: #666;
+    text-shadow: 1px 1px 0px #FFF;
+    margin:10px 0 0 0;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  input {
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid #131313;
+    margin-bottom: 15px;
+    width: 98%;
+    height: 20px;
+    padding: 0px 15px;
+  }
+  
+  a {
+    text-decoration:inherit
+  }
+  
+  .icon-case {
+    width: 35px;
+    float: left;
+    border-radius: 5px 0px 0px 5px;
+    background:#eeeeee;
+    height:42px;
+    position: relative;
+    text-align: center;
+    line-height:40px;
+  }
+    
+  .validation {
+    display:none;
+    margin: 0 0 10px;
+    font-weight:400;
+    font-size:13px;
+    color: #DE5959;
+  }
+  
+  h3{
+    text-align: center;
+  }
+  
+  label{
+      display:block;
+      color:black;
+      font-weight: 0;
+  }
+  
+  
+  
+  
+  
+  
+  p{float: left}
+  
+  .href{float: right}
+  
+  .bt{margin: 0 auto;}
+  
+  textarea{
+      border-radius: 10px;
+      color: black;
+      height: 70px;
+  }
+  
+  button {
+      border: none;
+      background: #3a7999;
+      color: #f2f2f2;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      position: relative;
+      box-sizing: border-box;
+      transition: all 500ms ease;
+  }        
+  
+  @media (min-width: 1367px) {
+  
+      footer{padding-top: 140px}
+  }
+  
+  .form{
+      height: 50px;
+      padding-bottom: 0px
+  }

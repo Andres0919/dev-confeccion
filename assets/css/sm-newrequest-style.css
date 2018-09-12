@@ -1,0 +1,80 @@
+.content{
+    overflow: hidden;    
+}
+.row{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.card .card-content {
+    padding: 10% 5%;
+}
+
+form input {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 10px 5px;
+    margin: 0 0 25px 0;
+    border: none;
+    border-bottom: .5px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    background: transparent;
+    font-weight: 500;
+    opacity: 1;
+    animation: input_opacity 0.8s cubic-bezier(.55, 0, .1, 1);
+    transition: border-bottom 0.2s cubic-bezier(.55, 0, .1, 1);
+  }
+
+  input:focus {
+    outline: none;
+    border-bottom: 2px solid #A30023;
+  }
+
+#op1{
+    width: 90%;
+    margin: 0px auto;
+}
+
+  select {
+    margin-bottom: 1em;
+    padding: .25em;
+    border: 0;
+    border-bottom: .5px solid rgba(0, 0, 0, 0.2); 
+    border-radius: 0;
+    font-weight: normal;
+  }
+  
+  select:focus, select:active {
+    outline: 0;
+    border-bottom-color: #A30023;
+  }
+
+  textarea {
+    border-radius: 0px 5px 5px 0px;
+    margin: 0;
+    width: 100%;
+    height: 50px; 
+    padding: 0;
+  }
+.desc{
+    width: 90%;
+    margin: 0 auto;
+}
+
+  .desc textarea{
+    margin-bottom: 2em;
+    border: 0;
+    border-bottom: .5px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  .desc textarea:focus{
+    outline: 0;
+    border: 0;
+    border-bottom: 2px solid #A30023;
+  }
+
+  
+  footer{
+    position: fixed;
+}
