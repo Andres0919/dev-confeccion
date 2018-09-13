@@ -8,8 +8,8 @@ class UserData {
 	public function getPlanta(){return PlantData::getById($this->planta);}
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (Nombre,Pass,Categoria,planta_id) ";
-		$sql .= "values ('$this->usuario','$this->pass',$this->categoria,$this->planta)";
+		$sql = "insert into ".self::$tablename." (Nombre,Pass,Categoria,planta_id,estado,creador) ";
+		$sql .= "values ('$this->usuario','$this->pass',$this->categoria,$this->planta,1,$this->creador)";
 		Executor::doit($sql);
 	}
 

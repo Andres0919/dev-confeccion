@@ -1,4 +1,5 @@
 <?php
+    $user = Core::$user;
     $usuario = $_POST['usuario'];
     $pass = $_POST['pass'];
     $categoria = $_POST['categoria'];
@@ -9,6 +10,7 @@
     $new->pass = $pass;
     $new->categoria = $categoria;
     $new->planta = $planta;
+    $new->creador = $user->id;
     $new->add();
 
     $alert = "Usuario Creado";
