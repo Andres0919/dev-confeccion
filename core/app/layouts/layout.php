@@ -33,19 +33,15 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <ul class="nav navbar-nav navbar-center">
-                <?php 
-                  $listView=["","home", "bonding-fullForm", "noConformes-form", "codigos-form", "hilos-set", "sesgos-form", "user-newPassForm", "sm-requests"];
-                  if(array_search($_GET['view'], $listView) != false){
-                ?>                  
+              <ul class="nav navbar-nav navbar-center">                
                 <li><a href="./index.php?view=home"><span>INICIO</span></a></li>
                 <li><a href="./index.php?view=bonding-fullForm"><span> TEST BONDING</span></a></li>
                 <!-- <li><a href="<?php echo (Core::$user->Nombre == 'consulta')? './index.php?view=noConformes-listadoNC' : './index.php?view=noConformes-form' ?>"><span> NO CONFORMES</span></a></li> -->
                 <li><a href="./index.php?view=codigos-form"><span> CÓDIGOS </span> </a></li>
+                <li><a href="./index.php?view=indicador-listado"><span> INDICADOR </span> </a></li>
                 <!-- <li><a href="<?php echo (Core::$user->Nombre == 'consulta')? './index.php?view=hilos-listado' : './index.php?view=hilos-set' ?>"><span> AJUSTE HILOS </span> </a></li> -->
                 <!-- <li><a href="<?php echo (Core::$user->Nombre == 'consulta')? './index.php?view=sesgos-listado' : './index.php?view=sesgos-form' ?>"><span> SESGOS/ELÁSTICOS</span></a></li> -->
                   <?php //if(isset($user->plant_id)){ ?><li><a href="./index.php?view=sm-requests"> <span>SOLICITUDES MARCE</span> </a></li><?php //} ?>
-                <?php } ?>
               </ul>
             </div>
             <div id="navbar-collapse" class="collapse navbar-collapse">
