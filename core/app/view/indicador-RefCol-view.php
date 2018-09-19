@@ -16,8 +16,16 @@
                     <td><?php echo $res->referencia ?></td>
                 </tr>
                 <tr>
+                    <td>TIPO REFERENCIA: </td>
+                    <td><?php echo $res->treferencia ?></td>
+                </tr>
+                <tr>
                     <td>COLECCIÓN: </td>
                     <td> <?php echo $res->coleccion ?></td>
+                </tr>
+                <tr>
+                    <td>TIPO COLECCIÓN: </td>
+                    <td> <?php echo $res->tcoleccion ?></td>
                 </tr>
                 <tr>
                     <td>FECHA ENTREGA: </td>
@@ -33,18 +41,18 @@
                 </tr>
             </table>
             <form action="./index.php?action=indicador-addFechaRef" method="POST">
-                <span>ACTIVIDAD</span>
+                <span>ACTIVIDAD:</span>
                 <select name="actividad" id="actividad" required>
                     <?php foreach ($actividades as $actividad) { ?>
                         <option value="<?php echo $actividad->id ?>"><?php echo $actividad->nombre ?></option>
                     <?php } ?>
                 </select>
-                <span>FECHA INICIO</span>
+                <span>FECHA INICIO:</span>
                 <input type="date" name="fecha_inicio" required>
-                <span>FECHA FIN</span>
+                <span>FECHA FIN:</span>
                 <input type="date" name="fecha_fin" >
                 <input type="hidden" name="id" value="<?php echo $id ?>" >
-                <input type="submit">
+                <input type="submit" class="btn btn-success" value="AGREGAR">
             </form>
             <table>
                 <thead>

@@ -72,7 +72,8 @@ class IndicadorData {
 		$sql .= "on lc.coleccion_id = c.id ";
 		$sql .= "inner join tipoColeccion tc ";
 		$sql .= "on lc.tipoColeccion_id = tc.id ";
-		$sql .= "order by id desc";
+		$sql .= "order by lc.id ";
+		
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new IndicadorData());
 	}

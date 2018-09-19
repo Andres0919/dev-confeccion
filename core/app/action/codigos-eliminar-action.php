@@ -1,9 +1,7 @@
 <?php
     $code = new CodigosData;
-    $code->codigo = $_GET['codigo'];
-    $code->usuario = $_GET['usuario'];
-    $code->referencia = $_GET['referencia'];
-
+    $code->id = $_GET['id'];
+    
     $code->del();
 
     $alert = "Codigo Eliminado";
