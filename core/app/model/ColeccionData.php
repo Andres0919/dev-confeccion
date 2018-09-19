@@ -89,20 +89,21 @@ class ColeccionData {
 	}
 
 	public static function getRefCol($id){
-		$sql = "select r.nombre as referencia, tr.nombre as treferencia ,c.nombre as coleccion, tc.nombre as tcoleccion, u.nombre as analista ,lc.fecha_entrega as entrega , lc.* from ".self::$tablename3." lc ";
+		$sql = "select r.nombre as referencia, tr.nombre as treferencia, c.nombre as coleccion, tc.nombre as tcoleccion, u.Nombre as analista, lc.fecha_entrega as entrega, lc.analista_ficha, rc.* from RefColeccion rc ";
+		$sql .= "inner join referencia r ";
+		$sql .= "on rc.referencia_id = r.id ";
+		$sql .= "inner join lineaColeccion lc ";
+		$sql .= "on rc.coleccion_id = lc.id ";
 		$sql .= "inner join coleccion c ";
 		$sql .= "on lc.coleccion_id = c.id ";
 		$sql .= "inner join tipoColeccion tc ";
 		$sql .= "on lc.tipoColeccion_id = tc.id ";
-		$sql .= "inner join refColeccion rc ";
-		$sql .= "on rc.coleccion_id = c.id ";
-		$sql .= "inner join referencia r ";
-		$sql .= "on rc.referencia_id = r.id ";
 		$sql .= "inner join tipoReferencia tr ";
-		$sql .= "on tr.id = r.tipoReferencia_id ";
+		$sql .= " on tipoReferencia_id = tr.id ";
 		$sql .= "inner join Usuarios u ";
 		$sql .= "on lc.analista_id = u.id ";
 		$sql .= " where rc.id=$id ";
+
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new ColeccionData());
 	}

@@ -1,4 +1,5 @@
 <?php 
+    $user = Core::$user;
     $indicadores = IndicadorData::getAll();
     $coleccionesini = ColeccionData::getAllini();
     $referencias = ReferenciaData::getAll();
@@ -14,12 +15,14 @@
         <main>
             <input id="tab1" type="radio" name="tabs" checked>
             <label for="tab1">LISTADO</label>
+            <?php if($user->id === 7 || $user->id ===1){ ?>
             <input id="tab2" type="radio" name="tabs">
             <label for="tab2">COLECCIONES INICIADAS</label>
             <input id="tab3" type="radio" name="tabs">
 			<label for="tab3">INICIAR COLECCIÓN</label>
             <input id="tab4" type="radio" name="tabs">
-			<label for="tab4">AGREGAR REFERENCIA-COLECCIÓN</label>
+            <label for="tab4">AGREGAR REFERENCIA-COLECCIÓN</label>
+            <?php } ?>
             <section id="content1">
                 <div class="JStableOuter Scrollp">
                     <?php if (count($indicadores)>0) { ?>                    
@@ -110,11 +113,13 @@
                 </div> 
             </section>
             <section id="content4">
-                <span>AGREGAR: </span>
+                <div class="optSave">
+                    <span>AGREGAR: </span>
                     <select name="opList" id="opList" onchange="option(this);">
-                    <option value="col">COLECCIÓN</option>
-                    <option value="ref">REFERENCIA</option>
-                </select>
+                        <option value="col">COLECCIÓN</option>
+                        <option value="ref">REFERENCIA</option>
+                    </select>
+                </div>
                 <div>
                     <form action="./index.php?action=indicador-addColeccion" id="col" method="POST">
                         <div>    

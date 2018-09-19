@@ -25,7 +25,7 @@ class CodigosData {
 	}
 
 	public function del(){
-		$sql = "delete from ".self::$tablename." where Codigo='$this->codigo' and Usuario='$this->usuario' and Referencia='$this->referencia'";
+		$sql = "delete from ".self::$tablename." where id=$this->id";
 		Executor::doit($sql);
 	}
 

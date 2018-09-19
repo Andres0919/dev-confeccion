@@ -106,9 +106,9 @@ main {
 	margin-right: 10px;
 	}
 
-  label[for*='1']:before { content: '\f1c0'; }
-  label[for*='2']:before { content: '\f1c0'; }
-  label[for*='3']:before { content: '\f1c0'; }
+  label[for*='1']:before { content: '\f0ce'; }
+  label[for*='2']:before { content: '\f0ce'; }
+  label[for*='3']:before { content: '\f260'; }
   label[for*='4']:before { content: '\f1c0'; }
 
 	label:hover {
@@ -350,4 +350,15 @@ main table thead th{
   max-width: 100%;
   width: 100%;
   margin: 0;
+}
+
+.optSave{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.optSave span{
+  font-weight: bold;
 }

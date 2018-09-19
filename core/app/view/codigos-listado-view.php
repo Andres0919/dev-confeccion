@@ -89,7 +89,7 @@
                         <?php if ($user->Categoria == "1"){ ?>
                             <td style="width:5%; align:center">
                                 <a class="btn btn-xs btn-warning" href="./index.php?view=codigos-form&op=<?php echo $codigo->Operacion; ?>&pi=<?php echo $codigo->Pieza; ?>&ma=<?php echo $codigo->Maquina; ?>&tr=<?php echo $codigo->Trayecto; ?>&te=<?php echo $codigo->Condicion_Tela; ?>&ge=<?php echo $codigo->Geo_Pieza; ?>&cor=<?php echo $codigo->Corte_Pieza; ?>&in=<?php echo $codigo->Insumo; ?>&ti=<?php echo $codigo->Tipo_Tela; ?>&co=<?php echo $codigo->Codigo; ?>&id=<?php echo $codigo->id ?>&rf=<?php echo $codigo->Referencia?>&d=<?php echo $codigo->Descripcion ?>"><i class="fa fa-pencil"></i></a>
-                                <a class="btn btn-xs btn-danger" href="./index.php?action=codigos-eliminar&codigo=<?php echo $codigo->Codigo;?>=<?php echo $codigo->Usuario ?>suario=<?php echo $codigo->Usuario;?>&referencia=<?php echo $codigo->Referencia;?> ">X</a>
+                                <a class="btn btn-xs btn-danger" href="./index.php?action=codigos-eliminar&id=<?php echo $codigo->id;?>">X</a>
                             </td>
                         <?php } ?>
                     </tr>           
