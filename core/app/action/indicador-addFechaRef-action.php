@@ -4,6 +4,8 @@
     $fecha->fecha_inicio = $_POST['fecha_inicio'];
     $fecha->fecha_fin = ($_POST['fecha_fin'] != '')? $_POST['fecha_fin'] : '';
     $fecha->actividad_id = $_POST['actividad'];
+    $fecha->analista_ficha = $_POST['analista_ficha'];
+    $fecha->analista_id = Core::$user->id;
     $fecha->addActivityDate();
 
     $alert = "ACTIVIDAD AGREGADA";
