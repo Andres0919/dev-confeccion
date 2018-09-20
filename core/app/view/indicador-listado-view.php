@@ -99,15 +99,11 @@
                             </datalist>
                         </div>
                         <div>
-                            <p>ANALISTA FICHA</p>
-                            <input type="text" name="analista_ficha" autocomplete="off">
-                        </div>
-                        <div>
                             <p>FECHA ENTREGA</p>
                             <input type="date" name="entrega">
                         </div>
                         <div class="btnSucc">                              
-                            <button type="submit" name="consulta" class="btn btn-success col-md-8" >INICIAR REFERENCIA</button>  
+                            <button type="submit" name="consulta" class="btn btn-success col-md-8" >INICIAR COLECCIÓN</button>  
                         </div>
                     </form> 
                 </div> 

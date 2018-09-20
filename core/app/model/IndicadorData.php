@@ -1,6 +1,7 @@
 <?php
 class IndicadorData {
 	public static $tablename = "RefColeccion";
+	public static $tablename2 = "actReferencia";
 
 	public function IndicadorData(){
 	}
@@ -14,22 +15,12 @@ class IndicadorData {
 	}
 
 	public function addActivityDate(){
-		$sql = "insert into actReferencia (refColeccion_id, actividades_id, fecha_inicio, fecha_fin) ";
-		$sql .= "values ($this->refColeccion_id, $this->actividad_id, '$this->fecha_inicio', '$this->fecha_fin')";
+		$sql = "insert into actReferencia (refColeccion_id, actividades_id, fecha_inicio, fecha_fin, analista_ficha,analista_id) ";
+		$sql .= "values ($this->refColeccion_id, $this->actividad_id, '$this->fecha_inicio', '$this->fecha_fin','$this->analista_ficha',$this->analista_id)";
+
 		Executor::doit($sql);
 	}
-
-	public function login(){
-		$sql = "select * from Usuarios where Nombre= '$this->Nombre'";
-		$query = Executor::doit($sql);
-		return Model::one($query[0],new IndicadorData());
-	}
-
-	public function actividad(){
-		$sql = "INSERT INTO Actividad ([Usuario],[Fecha],[Hora]) VALUES ('$this->Nombre',CONVERT(date, GETDATE(), 110),CONVERT(varchar(10), GETDATE(), 108))";
-		$query = Executor::doit($sql);
-	}
-
+	
 	public static function delById($id){
 		$sql = "delete from ".self::$tablename." where id=$id";
 		Executor::doit($sql);
@@ -41,8 +32,12 @@ class IndicadorData {
 	}
 
 // partiendo de que ya tenemos creado un objecto IndicadorData previamente utilizamos el contexto
-	public function update(){
-		$sql = "update ".self::$tablename." set name=\"$this->name\",email=\"$this->email\",last_name=\"$this->last_name\",username=\"$this->username\",rol=$this->rol,plant_id=$this->plant_id where id=$this->id";
+	public function addCodigo(){
+		$sql = "update ".self::$tablename." set codigo='$this->codigo' where id=$this->id";
+		Executor::doit($sql);
+	}
+	public function updateActivity(){
+		$sql = "update ".self::$tablename2." set actividades_id=$this->actividades_id,fecha_inicio='$this->fecha_inicio',fecha_fin='$this->fecha_fin' where id=$this->id";
 		Executor::doit($sql);
 	}
 
@@ -79,12 +74,20 @@ class IndicadorData {
 	}
 
 	public static function getAllRefOpc($id){
-		$sql = "select a.nombre as actividad, ar.* from actReferencia ar ";
+		$sql = "select u.nombre as analista, a.nombre as actividad, ar.* from actReferencia ar ";
 		$sql .= "inner join actividades a ";
 		$sql .= "on ar.actividades_id = a.id ";
+		$sql .= "inner join Usuarios u ";
+		$sql .= "on ar.analista_id = u.id ";
 		$sql .= "where ar.refColeccion_id= $id";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new IndicadorData());
+	}
+
+	public function getActividadById(){
+		$sql = "select * from actReferencia where id=$this->id ";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new IndicadorData());
 	}
 
 	public static function getAllActividades(){
