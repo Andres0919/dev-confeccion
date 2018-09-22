@@ -3,6 +3,7 @@
     $res = ColeccionData::getRefCol($id);
     $fechas = IndicadorData::getAllRefOpc($id);
     $actividades = IndicadorData::getAllActividades();
+    $mfs= IndicadorData::getAllMF($res->referencia_id);
 ?>
 <div class="secc">
 	<div class="card">
@@ -48,16 +49,35 @@
                     <td>CÓDIGO: </td>
                     <td><?php echo $res->codigo ?></td>
                 </tr>
-                <?php } ?>               
+                <?php } ?> 
+                <?php if($mfs){ ?>
+                    <tr>
+                        <td colspan="2"><strong>MUESTRA FÍSICA</strong></td>
+                    </tr>
+                    <?php foreach ($mfs as $mf) { ?>
+                    <tr>
+                        <td><?php echo $mf->actividad ?>: </td>
+                        <td><?php echo ($mf->mf)? 'SI' : 'NO' ?></td>
+                    </tr>
+                <?php   }
+                      } ?>  
+
             </table>
             <form action="./index.php?action=indicador-addFechaRef" method="POST" class="addForm">
                 <span>ACTIVIDAD:</span>
-                <select name="actividad" id="actividad" required>
+                <select name="actividad" id="actividad" onchange="showMF(this)" required>
                     <?php foreach ($actividades as $actividad) { ?>
                         <option value="<?php echo $actividad->id ?>"><?php echo $actividad->nombre ?></option>
                     <?php } ?>
                 </select>
-                <input type="text" name="analista_ficha">
+                <input type="text" name="analista_ficha" placeholder="analista ficha">
+                <div id="mf" hidden>
+                    <span>MF: </span>
+                    <span>SI</span>
+                    <input type="radio" value="1" name="mf">
+                    <span>NO</span>
+                    <input type="radio" value="0" name="mf">
+                </div>                
                 <span>FECHA INICIO:</span>
                 <input type="date" name="fecha_inicio" required>
                 <span>FECHA FIN:</span>
@@ -166,5 +186,19 @@
                 idRef.value = res.refColeccion_id;
             }
         })
+    }
+
+    function showMF(e){
+        let mf = document.querySelector('#mf');
+        switch (e.value) {
+            case '2':
+            case '7':
+                mf.style.display = 'block'
+                break;
+        
+            default:
+                mf.style.display = 'none'
+                break;
+        }
     }
 </script>

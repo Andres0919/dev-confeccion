@@ -2,6 +2,7 @@
 class IndicadorData {
 	public static $tablename = "RefColeccion";
 	public static $tablename2 = "actReferencia";
+	public static $tablename3 = "muestraFisica";
 
 	public function IndicadorData(){
 	}
@@ -12,6 +13,18 @@ class IndicadorData {
 		$sql = "insert into ".self::$tablename." (referencia_id,coleccion_id) ";
 		$sql .= "values ($this->referencia_id,$this->coleccion_id)";
 		Executor::doit($sql);
+	}
+
+	public function addMuestra(){
+		$sql = "insert into ".self::$tablename3." (actReferencia_id,isMuestra) ";
+		$sql .= "values ($this->actReferencia_id,$this->isMuestra)";
+		Executor::doit($sql);
+	}
+
+	function getLastId() {
+		$sql = "select @@IDENTITY as id";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new IndicadorData());
 	}
 
 	public function addActivityDate(){
@@ -95,6 +108,19 @@ class IndicadorData {
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new IndicadorData());
 	}
+
+	public static function getAllMF($id){
+		$sql = "select a.nombre as actividad, mf.isMuestra as mf, ar.* from actReferencia ar ";
+		$sql .= "inner join muestraFisica mf ";
+		$sql .= "on mf.actReferencia_id = ar.id ";
+		$sql .= "inner join actividades a ";
+		$sql .= "on ar.actividades_id = a.id ";
+		$sql .= "where ar.refColeccion_id=$id";
+
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new IndicadorData());
+	}
+
 
 	public static function getLike($q){
 		$sql = "select * from ".self::$tablename." where title like '%$q%' or content like '%$q%'";
