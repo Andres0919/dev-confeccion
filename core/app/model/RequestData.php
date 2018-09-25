@@ -11,9 +11,8 @@ class RequestData {
 	public function getPlant(){ return PlantData::getById($this->plant_id); }
 
 	public function add(){
-		$sql = "insert into request (reason,description,canal,term,nove,plant_id,created_id,created_at) ";
-		$sql .= "values ('$this->reason','$this->description','$this->canal','$this->term','$this->nove','$this->plant_id','$this->created_id',GETDATE())";
-
+		$sql = "insert into request (reason,description,canal,term,nove,plant_id,created_id,created_at, fileM) ";
+		$sql .= "values ('$this->reason','$this->description','$this->canal','$this->term','$this->nove','$this->plant_id','$this->created_id',GETDATE(), '$this->fileM')";
 		return Executor::doiit($sql);
 	}
 
