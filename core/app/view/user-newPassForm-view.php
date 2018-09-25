@@ -1,6 +1,7 @@
 <?php 
 	$u = Core::$user;
 	$users = UserData::getAll();
+	$plantas = PlantData::getAll();
 	$n = 0;
 ?>
 <div class="secc">
@@ -64,9 +65,9 @@
 								<label>
 									<select name="planta"  style="width:95%" style="height: 40px" onchange="changeMachine(this);">
 										<option selected>--Planta--</option>
-										<option value="1">Sabaneta</option>
-										<option value="2">Pereira</option>
-										<option value="7">Manizales</option>
+										<?php foreach ($plantas as $planta) { ?>
+											<option value="<?php echo $planta->id ?>"><?php echo $planta->name ?></option>											
+										<?php } ?>
 									</select>
 								</label>            
 							</div>
