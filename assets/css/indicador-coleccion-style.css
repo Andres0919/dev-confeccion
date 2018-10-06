@@ -1,12 +1,16 @@
-table{
-    width: 70%;
+.tableR{
+    width: 30% !important;
     margin: 2% auto 0 auto;
 }
 
+.tableC{
+  font-size: 2em;
+}
+
 table thead{
-  background-color: #A30023;
-  color: #fff;
- }
+ background-color: #A30023;
+ color: #fff;
+}
 
 .addForm{
     display: flex;
@@ -78,4 +82,16 @@ select {
 
 #addCode form input{
   width: 80%;
+}
+
+.modal form div{
+  display: grid;
+}
+
+.modal form div span .plus{
+  font-size: 2em;
+}
+
+.modal form div input {
+  margin: 5px 0;
 }

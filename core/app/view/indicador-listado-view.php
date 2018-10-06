@@ -31,16 +31,14 @@
 							<tr>
                                 <th>TIPO COLECCIÓN</th>
 								<th>COLECCIÓN</th>
-								<th>REFERENCIA</th>
 								<th>FECHA ENTREGA</th>
 							</tr>
 						</thead>
 						<tbody class="table-hover">
                             <?php foreach ($indicadores as $indicador) {	?>
-							<tr onclick="window.location='./index.php?view=indicador-RefCol&id=<?php echo $indicador->id ?>';">
+                            <tr data-toggle="modal" data-target="#showReferences" onclick="getReferences(<?php echo $indicador->id ?>)">
                                 <td><?php echo $indicador->tcoleccion ?></td>
 								<td><?php echo $indicador->coleccion?></td>
-								<td><?php echo $indicador->referencia?></td>
 								<td><?php echo $indicador->entrega->format('d-m-Y') ?></td>
 							</tr>                            
                             <?php } ?>
@@ -64,7 +62,7 @@
 						</thead>
 						<tbody class="table-hover">
                             <?php foreach ($coleccionesini as $coleccion) {	?>
-							<tr data-toggle="modal" data-target="#addRef" onclick="addId(<?php echo $coleccion->id ?>)">
+                            <tr onclick="window.location.href = './index.php?view=indicador-coleccion&id=<?php echo $coleccion->id ?>'">
 								<td><?php echo $coleccion->tcoleccion ?></td>
 								<td><?php echo $coleccion->coleccion ?></td>
 								<td><?php echo $coleccion->entrega->format('d-m-Y') ?></td>
@@ -82,7 +80,7 @@
                     <form onKeypress="if (event.keyCode == 13) event.returnValue = false;" method="post" action="./index.php?action=indicador-addindicador">
                         <div>
                             <p>TIPO COLECCIÓN</p>
-                            <select id="tcoleccion" name="tcoleccion">
+                            <select id="tcoleccion" name="tcoleccion" required>
                                 <?php foreach($tcoleccion as $t){ ?>
                                     <option value="<?php echo $t->id;?>" ><?php echo $t->nombre;?> </option>
                                 <?php } ?>                                                                      
@@ -90,7 +88,7 @@
                         </div> 
                         <div>
                             <p>COLECCIÓN </p>
-                            <input type="text"  list="coleccion" autocomplete="off"  name="coleccion">
+                            <input type="text"  list="coleccion" autocomplete="off"  name="coleccion" required>
                             <datalist id="coleccion" name="coleccion">
                                 <option></option>
                                 <?php foreach($colecciones as $coleccion){ ?>
@@ -100,7 +98,11 @@
                         </div>
                         <div>
                             <p>FECHA ENTREGA</p>
-                            <input type="date" name="entrega">
+                            <input type="date" name="entrega" required>
+                        </div>
+                        <div>
+                            <p>FECHA PRECOSTEO</p>
+                            <input type="date" name="precosteo" required>
                         </div>
                         <div class="btnSucc">                              
                             <button type="submit" name="consulta" class="btn btn-success col-md-8" >INICIAR COLECCIÓN</button>  
@@ -117,7 +119,7 @@
                     </select>
                 </div>
                 <div>
-                    <form action="./index.php?action=indicador-addColeccion" id="col" method="POST">
+                    <form action="./index.php?action=indicador-addColeccion" id="col"e method="POST">
                         <div>    
                             <p>NOMBRE</p>
                             <input name="nombre" type="text" autocomplete="off">
@@ -150,31 +152,25 @@
         </main>
     </div>
 </div>
-<div class="modal fade" id="addRef" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="showReferences" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">AGREGAR REFERENCIA</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="./index.php?action=indicador-addRefInCol" method="POST">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">AGREGAR REFERENCIA</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <div class="modal-body">
-            <span>NOMBRE:</span>
-            <input type="text"  list="referencia" autocomplete="off"  name="referencia">
-            <datalist id="referencia" >
-                <option></option>
-                <?php foreach($referencias as $referencia){ ?>
-                    <option value="<?php echo $referencia->nombre;?>" ></option>
-                <?php } ?>                                                                      
-            </datalist>
+            <p id="tcol"></p>
+            <p id="cole"></p>
+            <table class="table table-hover">
+                <tbody id="tblrefs">
+
+                </tbody>
+            </table>
             <input type="hidden" name="id" id="id">
         </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-success">GUARDAR</button>
-        </div>
-      </form>
     </div>
   </div>
 </div>
@@ -198,5 +194,39 @@
     function addId(id){
         let idInput = document.querySelector('#id');
         idInput.value = id;
+    }
+
+    function getReferences(id){
+        console.log(id);
+        let tcol = document.querySelector('#tcol');
+        let cole = document.querySelector('#cole');
+        let tblrefs = document.querySelector('#tblrefs');
+        params = {
+            'id' : id,
+        }
+        $.ajax({
+			data:  params,
+			url:   './?action=indicador-getRefByColeccion',
+			dataType: 'json',
+			type:  'get',
+			beforeSend: function () {
+			},
+			success (response) {
+				console.log(response);
+				tcol.innerHTML = response[0].tcoleccion;
+                cole.innerHTML = response[0].coleccion;
+				while (tblrefs.hasChildNodes()){
+					tblrefs.removeChild(tblrefs.childNodes[0]);
+				}
+				response.forEach(row => {
+					let tr = document.createElement('tr');
+					let td = document.createElement('td');
+					tr.setAttribute('onclick', `window.location='./index.php?view=indicador-RefCol&id=${row.id}'`);
+					td.innerHTML = row.referencia;
+					tr.appendChild(td);
+					tblrefs.appendChild(tr);
+				});
+			}
+		});
     }
 </script>

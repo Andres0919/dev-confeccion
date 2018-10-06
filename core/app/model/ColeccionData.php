@@ -16,8 +16,8 @@ class ColeccionData {
 	}
 
 	public function addLinea(){
-		$sql = "insert into ".self::$tablename3." (tipoColeccion_id,coleccion_id,fecha_entrega,isActive,analista_id) ";
-		$sql .= "values ($this->tcoleccion,$this->coleccion_id,'$this->fecha_entrega',1,$this->analista_id)";
+		$sql = "insert into ".self::$tablename3." (tipoColeccion_id,coleccion_id,fecha_entrega,isActive,analista_id, fecha_precosteo) ";
+		$sql .= "values ($this->tcoleccion,$this->coleccion_id,'$this->fecha_entrega',1,$this->analista_id, '$this->fecha_precosteo')";
 		Executor::doit($sql);
 	}
 
@@ -60,7 +60,12 @@ class ColeccionData {
 	}
 
 	public static function getById($id){
-		$sql = "select * from ".self::$tablename." where id='".$id."'";
+		$sql = "select c.nombre as coleccion, tc.nombre as tcoleccion, lc.fecha_entrega as entrega , lc.* from ".self::$tablename3." lc ";
+		$sql .= "inner join coleccion c ";
+		$sql .= "on lc.coleccion_id = c.id ";
+		$sql .= "inner join tipoColeccion tc ";
+		$sql .= "on lc.tipoColeccion_id = tc.id ";
+		$sql .= "where lc.id = $id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new ColeccionData());
 	}
@@ -89,7 +94,7 @@ class ColeccionData {
 	}
 
 	public static function getRefCol($id){
-		$sql = "select r.nombre as referencia, tr.nombre as treferencia, c.nombre as coleccion, tc.nombre as tcoleccion, u.Nombre as analista, lc.fecha_entrega as entrega, rc.* from RefColeccion rc ";
+		$sql = "select r.nombre as referencia, tr.nombre as treferencia, c.nombre as coleccion, lc.fecha_precosteo as fecha_precosteo, tc.nombre as tcoleccion, u.Nombre as analista, lc.fecha_entrega as entrega, rc.* from RefColeccion rc ";
 		$sql .= "inner join referencia r ";
 		$sql .= "on rc.referencia_id = r.id ";
 		$sql .= "inner join lineaColeccion lc ";

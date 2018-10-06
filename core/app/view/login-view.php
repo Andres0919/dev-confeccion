@@ -16,11 +16,12 @@
       <input type="password" placeholder="Contraseña" class="login-input" name="pass" required/>
       <div class="submit-container">
         <button type="submit" class="btn btn-success">Iniciar</button>
+        <a class="btn btn-info" href="/seguimiento_referencia">Seguimiento referencia</a>
       </div>
     </form>
   </section>
 </div>
-<div class="img"> 
+<div class="img">
 	<img src="assets/img/crystal.png" >
 </div> 
 

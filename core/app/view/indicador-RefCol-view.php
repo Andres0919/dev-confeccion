@@ -40,6 +40,12 @@
                     <td>FECHA ENTREGA: </td>
                     <td> <?php echo $res->entrega->format('d-m-Y') ?></td>
                 </tr>
+                <?php if($res->fecha_precosteo){ ?>
+                <tr>
+                    <td>FECHA PRECOSTEO: </td>
+                    <td> <?php echo $res->fecha_precosteo->format('d-m-Y') ?></td>
+                </tr>
+                <?php } ?>
                 <tr>
                     <td>ANALISTA COTIZACIÓN: </td>
                     <td> <?php echo $res->analista ?></td>
@@ -70,7 +76,7 @@
                         <option value="<?php echo $actividad->id ?>"><?php echo $actividad->nombre ?></option>
                     <?php } ?>
                 </select>
-                <input type="text" name="analista_ficha" placeholder="analista ficha">
+                <input type="text" name="analista_ficha" placeholder="analista ficha" required>
                 <div id="mf" hidden>
                     <span>MF: </span>
                     <span>SI</span>

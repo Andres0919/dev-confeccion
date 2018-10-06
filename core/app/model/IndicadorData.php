@@ -71,16 +71,14 @@ class IndicadorData {
 	}
 
 	public static function getAll(){
-		$sql = "select r.nombre as referencia, c.nombre as coleccion, lc.fecha_entrega as entrega, tc.nombre as tcoleccion, rc.* from ".self::$tablename." rc ";
-		$sql .= "inner join referencia r ";
-		$sql .= "on rc.referencia_id = r.id ";
+		$sql = "select c.nombre as coleccion, lc.fecha_entrega as entrega, tc.nombre as tcoleccion, lc.id from ".self::$tablename." rc ";
 		$sql .= "inner join lineaColeccion lc ";
 		$sql .= "on rc.coleccion_id = lc.id ";
 		$sql .= "inner join coleccion c ";
 		$sql .= "on lc.coleccion_id = c.id ";
 		$sql .= "inner join tipoColeccion tc ";
 		$sql .= "on lc.tipoColeccion_id = tc.id ";
-		$sql .= "order by lc.id ";
+		$sql .= "group by tc.nombre, c.nombre,lc.fecha_entrega,lc.id";
 		
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new IndicadorData());
@@ -121,6 +119,21 @@ class IndicadorData {
 		return Model::many($query[0],new IndicadorData());
 	}
 
+	public static function getRefsByColeccion($id){
+		$sql = "select r.nombre as referencia, c.nombre as coleccion, tc.nombre as tcoleccion, rc.* from ".self::$tablename." rc ";
+		$sql .= "inner join lineaColeccion lc ";
+		$sql .= "on rc.coleccion_id = lc.id ";
+		$sql .= "inner join coleccion c ";
+		$sql .= "on lc.coleccion_id = c.id ";
+		$sql .= "inner join tipoColeccion tc ";
+		$sql .= "on lc.tipoColeccion_id = tc.id ";
+		$sql .= "inner join referencia r ";
+		$sql .= "on rc.referencia_id = r.id ";
+		$sql .= "where lc.id=$id";
+
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new IndicadorData());
+	}
 
 	public static function getLike($q){
 		$sql = "select * from ".self::$tablename." where title like '%$q%' or content like '%$q%'";
