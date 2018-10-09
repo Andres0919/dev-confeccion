@@ -10,6 +10,7 @@ class Core {
 	public static $root = "";
 
 	public static $text = "";
+	public static $db_count = true;
 
 	public static $user = null;
 	public static $debug_sql = false;

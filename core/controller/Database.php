@@ -7,7 +7,7 @@ class Database {
 	}
 
 	function connect(){
-		$conInfo = array("Database"=>"dev-Bonding", 'CharacterSet' => 'UTF-8' , "UID"=>"plc", "PWD"=>"plc");
+		$conInfo = array("Database"=>"Bonding", 'CharacterSet' => 'UTF-8' , "UID"=>"plc", "PWD"=>"plc");
 		$conInfo1 = array("Database"=>"solicitud_marce", 'CharacterSet' => 'UTF-8' , "UID"=>"plc", "PWD"=>"plc");
 		$serverName = "10.40.50.79\SQLEXPRESS";
 		self::$con = sqlsrv_connect($serverName,$conInfo);

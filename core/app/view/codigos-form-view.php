@@ -4,6 +4,72 @@
     $pieza = PiezaData::getAll();
     $maquina = MaquinaData::getAll();
     $insumo = InsumoData::getAll();
+
+    if (isset($_GET['co'])) {
+        $codigo_splited = str_split($_GET['co']);
+        $codigo = new CodigosData();
+        $codigo->operacion = $codigo_splited[0].$codigo_splited[1];
+        $codigo->pieza = $codigo_splited[2].$codigo_splited[3];
+        $codigo->maquina = $codigo_splited[4].$codigo_splited[5].$codigo_splited[6];
+        $codigo->costura = $codigo_splited[7];
+        $codigo->ctela = $codigo_splited[8];
+        $codigo->geometria = $codigo_splited[9];
+        $codigo->corte = $codigo_splited[10];
+        $codigo->insumo = $codigo_splited[11];
+        $codigo->ttela = $codigo_splited[12];
+
+        $result = $codigo->getSimilars();
+        
+        $c = new stdClass();
+        $codigos_valor = [];
+        foreach ($result as $r ) {
+            
+            $count = 0;
+            $codigo_splited = str_split($r->Codigo);
+
+            if (count($codigo_splited) == 13) {
+                $c->operacion = $codigo_splited[0].$codigo_splited[1];
+                $c->pieza = $codigo_splited[2].$codigo_splited[3];
+                $c->maquina = $codigo_splited[4].$codigo_splited[5].$codigo_splited[6];
+                $c->costura = $codigo_splited[7];
+                $c->ctela = $codigo_splited[8];
+                $c->geometria = $codigo_splited[9];
+                $c->corte = $codigo_splited[10];
+                $c->insumo = $codigo_splited[11];
+                $c->ttela = $codigo_splited[12];
+
+                if($c->operacion == $codigo->operacion){
+                    $count++;
+                }
+                if($c->pieza == $codigo->pieza){
+                    $count++;
+                }
+                if($c->maquina == $codigo->maquina){
+                    $count++;
+                }
+                if($c->costura == $codigo->costura){
+                    $count++;
+                }
+                if($c->ctela == $codigo->ctela){
+                    $count++;
+                }
+                if($c->geometria == $codigo->geometria){
+                    $count++;
+                }
+                if($c->corte == $codigo->corte){
+                    $count++;
+                }
+                if($c->insumo == $codigo->insumo){
+                    $count++;
+                }
+                if($c->ttela == $codigo->ttela){
+                    $count++;
+                }
+                
+                array_push($codigos_valor, array($r->Codigo ,$count));
+            }
+        }
+    }
 ?>
 <div class="secc">
 	<div class="card">
@@ -144,9 +210,26 @@
                         <?php if(isset($_GET['co'])){ ?>
                         <div>
                             <label>
-                                <p>CÓDIGO GENERADO:</p>
+                                <p>CÓDIGO GENERADO: <?php echo strlen($_GET['co']) ?> Carácteres </p>
                                 <input class="cod" style="color:red" name="codigo" id="resultado" value="<?php echo $_GET['co'] ?>" readonly minlength="13" inxlength="13">
                             </label>
+                            <div class="similars">
+                            <?php $origin = str_split($_GET['co']);
+                                foreach ($codigos_valor as $valor) {
+                                    if($valor[1] >= 8){ ?>
+                                        <p>
+                                        <?php $opcion = str_split($valor[0]);
+                                            if($opcion[0] == $origin[0] && $opcion[1] == $origin[1]){ ?>
+                                                    <span><?php echo $opcion[0].$opcion[1]; ?></span> 
+                                            <?php }else{
+                                                echo $opcion[0].$opcion[1];
+                                            }
+                                        ?>
+                                        tiene <?php echo $valor[1] ?> items similares</p>
+                                <?php }
+                                }    
+                            ?>
+                            </div>
                             <div class="form-group">
                                 <label>
                                     <p>REFERENCIA </p>

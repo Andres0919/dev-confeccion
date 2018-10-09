@@ -7,11 +7,13 @@
 		$pendientes = RequestData::getAllPendings();
 		$asignados = RequestData::getAllAsigned();
 		$terminados = RequestData::getAllFinished();
+		
 	}else{
 		$pendientes = RequestData::getAllPendingsPlant($user->planta_id);
 		$asignados = RequestData::getAsignedUser($user->id);
 		$terminados = RequestData::getAllFinishedUser($user->id);
 	}
+
 ?>
 <div class="secc">
 	<div class="card">
@@ -46,6 +48,7 @@
 								<div class="col-md-4">
 									<select name="reason" id="reason" onchange="divChange(this)" required>
 										<option value="">-- SELECCIONE --</option>
+										<option value="Falta una terminal">Falta una terminal</option>
 										<option value="Montar Canaleta">Montar Canaleta</option>
 										<option value="Desmontar Canaleta">Desmontar Canaleta</option>
 										<option value="Reportar Problema">Reportar Problema</option>
@@ -555,4 +558,29 @@ function doSearch(){
 		}
 	}
 }
+
+function checkChange(){
+	params ={
+		'count': parseInt(document.querySelector('#tp').innerHTML) + 1
+	}
+	$.ajax({
+		data: params,
+		url:   './index.php?action=sm-checkChange',
+		dataType: 'json',
+		type:  'get',
+		beforeSend: function () {
+			// console.log('CARGANDO...');
+		},
+		success:  function (res) {
+			console.log(res.change);
+			if (res.change) {
+				location.reload();
+			}
+		},
+		error: function (err) {
+			console.log(err);
+		}
+	});
+}
+setInterval(checkChange, 1000)
 </script>

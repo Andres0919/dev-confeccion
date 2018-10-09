@@ -268,3 +268,12 @@ textarea:focus{
   max-height: 250px;
   overflow-y: scroll;
 }
+
+.similars{
+  max-height: 200px;
+  overflow: auto;
+}
+
+.similars span{
+  color: #A30023;
+}

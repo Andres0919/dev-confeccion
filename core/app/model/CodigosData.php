@@ -115,6 +115,21 @@ class CodigosData {
 		return Model::many($query[0],new CodigosData());
 	}
 
+	public function getSimilars(){
+		$sql = "SELECT * FROM ".self::$tablename;
+		$sql .= " WHERE substring(Codigo,1,2) = '$this->operacion' ";
+		$sql .= " OR substring(Codigo,3,2) = '$this->pieza' ";
+		$sql .= " OR substring(Codigo,5,3) = '$this->maquina' ";
+		$sql .= " OR substring(Codigo,8,1) = '$this->costura' ";
+		$sql .= " OR substring(Codigo,9,1) = '$this->ctela' ";
+		$sql .= " OR substring(Codigo,10,1) = '$this->geometria' ";
+		$sql .= " OR substring(Codigo,11,1) = '$this->corte' ";
+		$sql .= " OR substring(Codigo,12,1) = '$this->insumo' ";
+		$sql .= " OR substring(Codigo,13,1) = '$this->ttela' ";
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new CodigosData());
+	}
+
 }
 
 ?>

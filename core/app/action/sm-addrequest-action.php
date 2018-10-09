@@ -24,7 +24,6 @@ switch ($r->reason) {
 $r->description = $_POST["description"];
 $r->plant_id = $user->planta_id;
 $r->created_id = $_POST["created_id"];
-
 $r->add();
 
 $alert = "Solicitud Creada Exitosamente";
