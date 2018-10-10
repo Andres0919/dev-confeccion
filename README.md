@@ -1,4 +1,1 @@
-# Supportix
-Sistema de Tickets de Soporte
-
-### Powered by Evilnapsis
+pagina web confeccion
