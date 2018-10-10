@@ -124,7 +124,7 @@
                         </div>  
                         <div>
                             <label>
-                                <p>MÁQUINAS </p>
+                                <p>MÁQUINA </p>
                                 <input type="text" list="maquina" name="maquina" autocomplete="off" value="<?php echo (isset($_GET['ma']))? $_GET['ma'] : '' ?>" required >
                                 <datalist id="maquina" name="maquina" required>
                                     <option selected></option>
@@ -219,12 +219,69 @@
                                     if($valor[1] >= 8){ ?>
                                         <p>
                                         <?php $opcion = str_split($valor[0]);
-                                            if($opcion[0] == $origin[0] && $opcion[1] == $origin[1]){ ?>
+                                            if($opcion[0] != $origin[0] || $opcion[1] != $origin[1]){ ?>
                                                     <span><?php echo $opcion[0].$opcion[1]; ?></span> 
                                             <?php }else{
                                                 echo $opcion[0].$opcion[1];
                                             }
                                         ?>
+                                        <?php 
+                                            if($opcion[2] != $origin[2] || $opcion[3] != $origin[3]){ ?>
+                                                    <span><?php echo $opcion[2].$opcion[3]; ?></span> 
+                                            <?php }else{
+                                                echo $opcion[2].$opcion[3];
+                                            }
+                                        ?>
+                                        <?php 
+                                            if($opcion[4] != $origin[4] || $opcion[5] != $origin[5] || $opcion[6] != $origin[6]){ ?>
+                                                    <span><?php echo $opcion[4].$opcion[5].$opcion[6]; ?></span> 
+                                            <?php }else{
+                                                echo $opcion[4].$opcion[5].$opcion[6];
+                                            }
+                                        ?>
+                                        <?php 
+                                            if($opcion[7] != $origin[7]){ ?>
+                                                    <span><?php echo $opcion[7]; ?></span> 
+                                            <?php }else{
+                                                echo $opcion[7];
+                                            }
+                                        ?>
+                                        <?php 
+                                            if($opcion[8] != $origin[8]){ ?>
+                                                    <span><?php echo $opcion[8]; ?></span> 
+                                            <?php }else{
+                                                echo $opcion[8];
+                                            }
+                                        ?>
+                                        <?php 
+                                            if($opcion[9] != $origin[9]){ ?>
+                                                    <span><?php echo $opcion[9]; ?></span> 
+                                            <?php }else{
+                                                echo $opcion[9];
+                                            }
+                                        ?>
+                                        <?php 
+                                            if($opcion[10] != $origin[10]){ ?>
+                                                    <span><?php echo $opcion[10]; ?></span> 
+                                            <?php }else{
+                                                echo $opcion[10];
+                                            }
+                                        ?>
+                                        <?php 
+                                            if($opcion[11] != $origin[11]){ ?>
+                                                    <span><?php echo $opcion[11]; ?></span> 
+                                            <?php }else{
+                                                echo $opcion[11];
+                                            }
+                                        ?>
+                                        <?php 
+                                            if($opcion[12] != $origin[12]){ ?>
+                                                    <span><?php echo $opcion[12]; ?></span> 
+                                            <?php }else{
+                                                echo $opcion[12];
+                                            }
+                                        ?>
+                                        
                                         tiene <?php echo $valor[1] ?> items similares</p>
                                 <?php }
                                 }    
